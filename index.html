@@ -1,129 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>笑えるタイピング練習</title>
+        <title>タイピングゲーム</title>
 <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="typing.css" />
-    <audio src =" _sound_anime_mp3_incorrect1.mp3"id="missaudio"></audio>
-    <audio src ="_sound_battle_mp3_handgun-out-bullets1.mp3" id="correctaudio"></audio> 
-    <script>
-var wordlist = ["imakokoitidekare-tabterunodagainndojinnmitainahitogahaittekitetennnainikinntyougahasitteru","sinnkennzeminomanngawogyakukarayomutobaddoenndoninru","konnbinidesyousyuuzaikattarasutoro-gatuitekita","annpannmannhakimisatotugeraretatokinosyougeki","baachanngarunnbaniesayatteta","hosinoka-bixinidetekurupinnkuironoyatunamaenanndakke","gosaijinimainasugosaihadanofannde-syonnnuttemita","sakkimatuokasyuuzougahanndorudakemottekousokudourohasitteta","syoutokutaisinokimoti,hitorizutusyabereurusai","kurisumasunanonioreniatatakakusessitekurernohabennzadake"];
-var wordlistJapanese = ["今ココイチでカレー食べてるのだがインド人みたいな人が入ってきて店内に緊張が走ってる","進研ゼミの漫画を逆から読むとバッドエンドになる","コンビニで消臭剤買ったらストローが付いてきた","アンパンマンは君さと告げられた時の衝撃","ばあちゃんがルンバに餌やってた","星のカービィに出てくるピンク色のやつ名前なんだっけ","5歳児にマイナス5歳肌のファンデーション塗ってみた","さっき松岡修造がハンドルだけ持って高速道路走ってた","聖徳太子の気持ち,1人ずつ喋れうるさい","クリスマスなのに俺に温かく接してくれるのは便座だけ"];
-     var time_limit = 60;
-     var readytime = 3;
-     var score;
-     var correct;
-     var mistake;
-     var char_num = 0;
-     var word_char;
-     var random;
-     function ready(){
-         readytime = 3;
-         scoredis.innerHTML="";
-         start_button.style.visibility ="hidden";
-         var readytimer = setInterval(function(){
-             count.innerHTML=readytime;
-             readytime--;
-             if(readytime < 0){
-                clearInterval(readytimer);
-                 gameStart();
-                }
-         },1000);
-     }
-     function gameStart(){
-         score = 0.0;
-         mistake = 0;
-         correct = 0;
-         wordDisplay();
-         var time_remaining = time_limit;
-         var gametimer = setInterval(function(){
-            count.innerHTML="残り時間："+time_remaining;
-             time_remaining--;
-             if(time_remaining <= 0){
-             clearInterval(gametimer);
-                 finish();
-         }
-         },1000);
-     }
-     function wordDisplay(){
-         random = Math.floor( Math.random() * wordlist.length );
-         word.innerHTML=wordlist[random];
-         japanese.innerHTML=wordlistJapanese[random];
-         charInsort();
-     }
-     function charInsort(){
-         word_char = wordlist[random].charAt(char_num);
-     }
-     function finish(){
-         score = Math.floor(Math.pow(correct,2) * Math.pow((correct/(correct+mistake)),5));
-         scoredis.innerHTML="スコア:"+score+"点"+"<hr>正タイプ数:"+correct+"<br>ミスタイプ数:"+mistake+"<br>正答率"+(correct/(correct+mistake)*100).toFixed(1)+"%";
-         count.innerHTML="";
-         word.innerHTML="";
-         japanese.innerHTML="";
-         start_button.style.visibility ="visible";
-         word_char=0;
-         random = 0;
-         char_num = 0;
-     }
-document.onkeydown = function(e) {
-    if(e.keyCode == 189){
-       keyStr = "-";
-       }else if(e.keyCode == 188){
-                keyStr = ","
-                }else{
- var keyStr = String.fromCharCode(e.keyCode);
-    keyStr = keyStr.toLowerCase();
-       }
-    if(keyStr == word_char){
-        document.getElementById('missaudio').pause();
-        document.getElementById('missaudio').currentTime = 0;
-        document.getElementById('correctaudio').pause();
-                   document.getElementById('correctaudio').currentTime = 0;
-        document.getElementById('correctaudio').play();
-        word.innerHTML="<span style='color: red;'>"+wordlist[random].substr(0,char_num+1)+"</span>"+wordlist[random].substr(char_num+1,wordlist[random].length);
-        char_num++;
-        correct++;
-        charInsort();
-       }else{
-                      document.getElementById('missaudio').pause();
-           document.getElementById('missaudio').currentTime = 0;
-           document.getElementById('correctaudio').pause();
-           document.getElementById('correctaudio').currentTime = 0;
-           mistake++;
-           document.getElementById('missaudio').play();
-       }
-    if(char_num == wordlist[random].length){
-        char_num=0;
-        wordDisplay();
-       }
-};
-
-</script>
-<style>
- body{
-   
- background-image: url("https://pro-foto.jp/free/img/images_big/umi0179-022.jpg");
+        <style>
+      body{background-image: url("https://pro-foto.jp/free/img/images_big/umi0179-022.jpg");
  background-size:cover;}
- 
-.wrap{
-     padding:100px 0px 100px 0p;
-     text-align:center;
-     
+      h1{
+      padding:150px 20px 0px 50px; }
+     .btn-square-little-rich{
+    position: relative;
+  display: inline-block;
+  padding: 0.8em 4em;
+  text-decoration: none;
+  color: ;
+  background: #03A9F4;/*色*/
+  border: solid 1px #0f9ada;/*線色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  font-size:30px;}
+
+.btn-square-little-rich:active {
+  /*押したとき*/
+  border: solid 1px #03A9F4;
+  box-shadow: none;
+  text-shadow: none;
 }
-</style>
-           </head>
-<body>
-                <div class="wrap">
-                <input type="button" 
-                id="start_button" value="start" onclick="ready()" style="text-align: center">
-                <div id="count"></div>
-                    <h1><div id="japanese"></div></h1>
-                    <h2><div id="word"></div></h2>
-                <div id="scoredis"></div>
-    </div>
-    
-    
-    
-</body>
- 
-</html>
+        </style> 
+     </head>
+     <body>
+       <h1>爆笑タイピング教室へようこそ！</h1>  
+       <div style="text-align: center;">
+      <a href="#" class="btn-square-little-rich">次へ</a> 
+      </div>
+     </body>
